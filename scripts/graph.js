@@ -1,21 +1,13 @@
 import { getCityDataUri } from './config/config.js';
-
+import { getJsonData } from './rest/get.js';
 
 export function drawGraph(city) {
-    callEndpoint(city);
+    const cityDataUri = getCityDataUri(city);
+    getJsonData(cityDataUri)
+        .then(result => drawDataAsGraph(result))
+        .catch(error => console.log(error));
 }
 
-function callEndpoint(city) {
-    const cityDataUri = getCityDataUri('Bochnia');
-    //TODO impl
-    foo();
-}
-
-async function foo() {
-    var s = await bar();
-    console.log(s);
-}
-
-function bar() {
-    return "bar";
+function drawDataAsGraph(data) {
+    //TODO impl  
 }
