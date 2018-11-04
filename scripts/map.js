@@ -8,6 +8,7 @@ import { fromLonLat } from 'ol/proj';
 import { getStyles } from './styles.js';
 import { addMarker } from './marker.js';
 import { addLine } from './line.js';
+import { drawGraph } from './graph.js';
 
 const cracowCenterCoords = [19.937398, 50.061696];
 const cracowRandomCoords = [19.887398, 50.081696];
@@ -18,6 +19,8 @@ var features = [];
 
 addMarker(features, cracowCenterCoords);
 addLine(features, cracowCenterCoords, cracowRandomCoords);
+
+drawGraph("Bochnia");
 
 const vectorSource = new VectorSource({ features: features });
 
