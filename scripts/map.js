@@ -6,44 +6,31 @@ import VectorSource from 'ol/source/Vector';
 import { Map, View } from 'ol';
 import { fromLonLat } from 'ol/proj';
 import { getStyles } from './styles.js';
-import { addMarker } from './marker.js';
-import { addLine } from './line.js';
-import { drawGraph } from './graph.js';
 
-const cracowCenterCoords = [19.937398, 50.061696];
-const cracowRandomCoords = [19.887398, 50.081696];
+export function drawMap(features, mapCenterCoords) {
+  const styles = getStyles();
 
-const styles = getStyles();
+  const vectorSource = new VectorSource({ features: features });
 
-var features = [];
+  const vectorLayer = new VectorLayer({
+    source: vectorSource,
+    style: function (feature) {
+      return styles[feature.get('type')];
+    }
+  });
 
-addMarker(features, cracowCenterCoords);
-addLine(features, cracowCenterCoords, cracowRandomCoords);
-
-drawGraph("Bochnia");
-
-const vectorSource = new VectorSource({ features: features });
-
-const vectorLayer = new VectorLayer({
-  source: vectorSource,
-  style: function (feature) {
-    return styles[feature.get('type')];
-  }
-});
-
-const map = new Map({
-  target: 'OsmMap',
-
-  layers: [
-    new TileLayer({
-      source: new OSM()
-    }),
-    vectorLayer
-  ],
-
-  view: new View({
-    projection: 'EPSG:3857',
-    center: fromLonLat([19.937398, 50.061696]),
-    zoom: 13
-  })
-});
+  const map = new Map({
+    target: 'OsmMap',
+    layers: [
+      new TileLayer({
+        source: new OSM()
+      }),
+      vectorLayer
+    ],
+    view: new View({
+      projection: 'EPSG:3857',
+      center: fromLonLat(mapCenterCoords),
+      zoom: 17
+    })
+  });
+}
