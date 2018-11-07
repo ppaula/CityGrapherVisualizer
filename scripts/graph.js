@@ -46,6 +46,7 @@ function getNodeById(nodes, id) {
     nodes.forEach(node => {
         if (node['id'] == id) {
             matchingNode = node;
+            break;
         }
     });
 
