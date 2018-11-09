@@ -43,12 +43,12 @@ function drawDataAsGraph(graphData) {
 
 function getNodeById(nodes, id) {
     let matchingNode;
-    nodes.forEach(node => {
+    for(var node in nodes) {
         if (node['id'] == id) {
             matchingNode = node;
             break;
         }
-    });
+    }
 
     return matchingNode;
 }
