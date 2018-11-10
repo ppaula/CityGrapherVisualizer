@@ -9,7 +9,7 @@ import { drawMap } from './map.js';
 draw('Bochnia');
 
 export function draw(city) {
-    const cityGraphDataUri = getCityGraphUri(city);
+    const cityGraphDataUri = getCityDataUri(city);
     getJsonData(cityGraphDataUri)
         .then(result => drawDataAsGraph(result))
         .catch(error => console.log(error));
@@ -23,16 +23,16 @@ function drawDataAsGraph(graphData) {
     let mapCenterCoords;
 
     ways.forEach(way => {
-        const wayNodesIds = way['nodes'];
+        const wayNodes = way['nodes'];
 
-        const firstNode = getNodeById(nodes, wayNodesIds[0]);
+        const firstNode = wayNodes[0];
         const firstNodeCoords = mapCenterCoords = [firstNode['lon'], firstNode['lat']];
         addMarker(features, firstNodeCoords);
 
-        for (let i = 1; i < wayNodesIds.length; ++i) {
-            const nodeFrom = getNodeById(nodes, wayNodesIds[i - 1]);
+        for (let i = 1; i < wayNodes.length; ++i) {
+            const nodeFrom = wayNodes[i - 1];
             const nodeFromCoords = [nodeFrom['lon'], nodeFrom['lat']];
-            const nodeTo = getNodeById(nodes, wayNodesIds[i]);
+            const nodeTo = wayNodes[i];
             const nodeToCoords = [nodeTo['lon'], nodeTo['lat']];
             addLine(features, nodeFromCoords, nodeToCoords);
             addMarker(features, nodeToCoords);
@@ -40,15 +40,4 @@ function drawDataAsGraph(graphData) {
     });
 
     drawMap(features, mapCenterCoords);
-}
-
-function getNodeById(nodes, id) {
-    let matchingNode;
-    nodes.forEach(node => {
-        if (node['id'] == id) {
-            matchingNode = node;
-        }
-    });
-
-    return matchingNode;
 }
