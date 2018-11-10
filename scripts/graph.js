@@ -1,4 +1,5 @@
 import { getCityGraphUri } from './config/config.js';
+import { getCityDataUri } from './config/config.js';
 import { getJsonData } from './rest/get.js';
 import { addMarker } from './marker.js';
 import { addLine } from './line.js';
@@ -43,12 +44,11 @@ function drawDataAsGraph(graphData) {
 
 function getNodeById(nodes, id) {
     let matchingNode;
-    for(var node in nodes) {
+    nodes.forEach(node => {
         if (node['id'] == id) {
             matchingNode = node;
-            break;
         }
-    }
+    });
 
     return matchingNode;
 }
