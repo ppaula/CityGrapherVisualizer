@@ -9,7 +9,7 @@ import { drawMap } from './map.js';
 draw('Bochnia');
 
 export function draw(city) {
-    const cityGraphDataUri = getCityDataUri(city);
+    const cityGraphDataUri = getCityGraphUri(city);
     getJsonData(cityGraphDataUri)
         .then(result => drawDataAsGraph(result))
         .catch(error => console.log(error));
