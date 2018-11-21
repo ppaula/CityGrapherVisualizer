@@ -1,5 +1,151 @@
-html, body, #OsmMap {
-    width: 100%;
-    height: 100%;
-    margin: 0;
+/* Declarations of grid elements for templating areas */
+nav {
+  grid-area: nav
 }
+
+aside {
+  grid-area: aside
+}
+
+.osmMapContainer {
+  grid-area: osmMapContainer
+}
+
+footer {
+  grid-area: footer
+}
+
+/* Styling elements */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.gridContainer{
+  display: grid;
+  grid-gap: 1em;
+  min-height: 100vh;
+  
+  padding: 10px;
+}
+
+.navigation {
+  list-style: none;
+  margin: 0; 
+  border-radius: 1em;
+  
+  /* background:deepskyblue; */
+  background: rgb(248, 172, 84);
+  
+  font-size: 1em;
+  
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  
+  flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  justify-content: flex-start;
+}
+
+.navigation a {
+  text-decoration: none;
+  display: block;
+  padding: 1em;
+  color: #441e2d;
+}
+
+.navigation a:hover {
+  /* TODO doesn't work. Don't know why ;( */
+  background: darken(deepskyblue, 2%);
+}
+
+.osmMapContainer {
+  margin: 0em;
+  border-radius: 1em;  
+  background: #c0547f;
+}
+
+.tools {
+  background-color: #C02942;
+  color: whitesmoke;
+  padding: 1em;
+  border-radius: 1em;
+}
+
+footer {
+  background-color:#542437;
+  color: rgb(248, 172, 84);;
+  padding: 1em;
+  border-radius: 1em;  
+}
+
+#osmMap {
+  /* TODO make it work to fit to the osmContainer's height */
+  /* height: 100%; */
+  padding: 1em;
+}
+
+/* Responsiveness */
+/* Desktops */
+@media screen and (min-width: 801px) {
+  .gridContainer{
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 3em 1fr 3em;
+    grid-template-areas: 
+    "nav nav nav nav"
+    "aside osmMapContainer osmMapContainer osmMapContainer"
+    "footer footer footer footer"  
+  }
+}
+
+/* Tablets */
+@media all and (max-width: 800px) {
+  .gridContainer{
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 3em 1fr 3em;
+    grid-template-areas: 
+    "nav nav nav"
+    "aside osmMapContainer osmMapContainer"
+    "footer footer footer"  
+  }
+  
+  .navigation {
+    justify-content: space-around;
+  }
+}
+
+/* Mobile devices */
+@media all and (max-width: 600px) {
+  .gridContainer{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: 8em 1fr 1fr 3em;
+    grid-template-areas: 
+    "nav"
+    "aside"
+    "osmMapContainer"
+    "footer"  
+  }
+  
+  .navigation {
+    -webkit-flex-flow: column wrap;
+    flex-flow: column wrap;
+    padding: 0;
+  }
+  
+  .navigation a { 
+    text-align: center; 
+    padding: 10px;
+    border-top: 1px solid rgba(255,255,255,0.3); 
+    border-bottom: 1px solid rgba(0,0,0,0.1); 
+  }
+  
+  .navigation li:last-of-type a {
+    border-bottom: none;
+  }
+}   

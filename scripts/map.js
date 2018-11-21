@@ -20,7 +20,7 @@ export function drawMap(features, mapCenterCoords) {
   });
 
   const map = new Map({
-    target: 'OsmMap',
+    target: 'osmMap',
     layers: [
       new TileLayer({
         source: new OSM()

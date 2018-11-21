@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "compass": "^0.1.1",
     "ol": "^5.2.0"
   },
   "devDependencies": {
