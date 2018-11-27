@@ -7,18 +7,20 @@ import { Map, View } from 'ol';
 import { fromLonLat } from 'ol/proj';
 import { getStyles } from './styles.js';
 
+window.onresize = resizeOsmMapToItsContainersHeight;
+
 export function drawMap(features, mapCenterCoords) {
   const styles = getStyles();
-
+  
   const vectorSource = new VectorSource({ features: features });
-
+  
   const vectorLayer = new VectorLayer({
     source: vectorSource,
     style: function (feature) {
       return styles[feature.get('type')];
     }
   });
-
+  
   const map = new Map({
     target: 'osmMap',
     layers: [
@@ -34,3 +36,10 @@ export function drawMap(features, mapCenterCoords) {
     })
   });
 }
+
+function resizeOsmMapToItsContainersHeight() {
+  const osmMapElement = document.getElementById("osmMap");
+  osmMapElement.style.height = "0px";
+  const height = document.getElementById("osmFirstMapContainer").offsetHeight + "px";
+  osmMapElement.style.height = height;
+};

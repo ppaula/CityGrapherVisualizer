@@ -13,7 +13,6 @@ export function draw(city) {
     getJsonData(cityGraphDataUri)
         .then(result => drawDataAsGraph(result))
         .catch(error => console.log(error));
-
 }
 
 function drawDataAsGraph(graphData) {
