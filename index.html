@@ -4,6 +4,8 @@
 <head>
 	<title>City Grapher Visualizer</title>
 	<link rel="stylesheet" type="text/css" href="./css/main.css">
+	<link rel="stylesheet" type="text/css" href="./css/input.css">
+	<link rel="stylesheet" type="text/css" href="./css/toggleswitch.css">
 </head>
 
 <body>
@@ -17,7 +19,15 @@
 		</nav>
 		
 		<aside class="tools">
-			Here be tools!
+			<div class="inputDiv">
+				<input type="text" id="cityInput" class="inputPlaceholder" placeholder="City">
+				<label for="cityInput" class="inputLabel">City</label>
+			</div>
+			
+			<div class="toggleSwitchDiv">
+				<input type="checkbox" id="inputToggleFirst" class="cbx hidden" />
+				<label for="inputToggleFirst" class="toggleSwitchLabel"></label>
+			</div>
 		</aside>
 		
 		<div class="osmMapContainer" id="osmFirstMapContainer">
