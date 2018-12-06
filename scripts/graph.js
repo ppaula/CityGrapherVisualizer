@@ -1,21 +1,8 @@
-import { getCityGraphUri } from './config/config.js';
-import { getCityDataUri } from './config/config.js';
-import { getJsonData } from './rest/get.js';
 import { addMarker } from './marker.js';
 import { addLine } from './line.js';
 import { drawMap } from './map.js';
 
-//TODO trigger this function somewhere else (for examole some button onClick acion etc)
-draw('Bochnia');
-
-export function draw(city) {
-    const cityGraphDataUri = getCityGraphUri(city);
-    getJsonData(cityGraphDataUri)
-        .then(result => drawDataAsGraph(result))
-        .catch(error => console.log(error));
-}
-
-function drawDataAsGraph(graphData) {
+export function drawDataAsGraph(graphData) {
     const ways = graphData['ways'];
     const nodes = graphData['nodes'];
     let features = [];
