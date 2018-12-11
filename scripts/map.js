@@ -10,6 +10,8 @@ import { getStyles } from './styles.js';
 window.onresize = resizeOsmMapToItsContainersHeight;
 
 export function drawMap(features, mapCenterCoords) {
+  clearTarget();
+
   const styles = getStyles();
   
   const vectorSource = new VectorSource({ features: features });
@@ -43,3 +45,7 @@ function resizeOsmMapToItsContainersHeight() {
   const height = document.getElementById("osmFirstMapContainer").offsetHeight + "px";
   osmMapElement.style.height = height;
 };
+
+function clearTarget() {
+  document.getElementById("osmMap").innerHTML = "";
+}
