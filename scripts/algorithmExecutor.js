@@ -2,7 +2,7 @@ import { validate } from './formValidator.js';
 import { getCityGraphUri } from './config/config.js';
 import { getUriForAlgorithmTaskResult } from './config/config.js';
 import { getJsonData } from './rest/get.js';
-import { grawGraph } from './graph.js';
+import { drawGraph } from './graph.js';
 
 const algorithmStarterButton = document.getElementById("algorithmStarterButton");
 
@@ -43,7 +43,7 @@ function getPositiveResultFromAlgorithm(taskId) {
     const uri = getUriForAlgorithmTaskResult(taskId);
     
     getJsonData(uri).then(algorithmResult => {
-        grawGraph(algorithmResult);
+        drawGraph(algorithmResult);
     })
     .catch(error => console.log(error));
 }

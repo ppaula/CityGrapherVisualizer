@@ -2,7 +2,7 @@ import { addMarker } from './marker.js';
 import { addLine } from './line.js';
 import { drawMap } from './map.js';
 
-export function grawGraph(graphData) {
+export function drawGraph(graphData) {
     const edges = graphData['edges'];
     const crossings = graphData['crossings'];
     let features = [];
