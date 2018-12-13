@@ -12,6 +12,17 @@ export function getCityGraphUri(city) {
     return encodeQuerySingleParam(cityGraphEndpointPath, queryParamNameForCity, city);
 }
 
+export function getUriForAlgorithmTask(taskId) {
+    const algorithmBaseUrl = getAlgorithmBaseUrl();
+    return algorithmBaseUrl + '/' + taskId;
+}
+
+export function getUriForAlgorithmTaskResult(taskId) {
+    const dataCollectorBaseUrl = getDataCollectorBaseUrl();
+    const algorithmResultEndpoint = getDataCollectorEndpoints()['algorithmResult'];
+    return dataCollectorBaseUrl  + algorithmResultEndpoint  + taskId;
+}
+
 function getCityDataEndpointPath() {
     const dataCollectorBaseUrl = getDataCollectorBaseUrl();
     const cityDataEndpoint = getDataCollectorEndpoints()['cityData'];
@@ -22,12 +33,6 @@ function getCityGraphEndpointPath() {
     const dataCollectorBaseUrl = getDataCollectorBaseUrl();
     const cityGraphEndpoint = getDataCollectorEndpoints()['cityGraph'];
     return dataCollectorBaseUrl + cityGraphEndpoint;
-}
-
-function getAlgorithmEndpointPath() {
-    const algorithmBaseUrl = getAlgorithmBaseUrl();
-    const algorithmEndpoint = getAlgorithmEndpoints()['algorithm'];
-    return algorithmBaseUrl + algorithmEndpoint;
 }
 
 function getDataCollectorBaseUrl() {

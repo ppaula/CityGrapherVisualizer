@@ -1,40 +1,27 @@
-import { getCityGraphUri } from './config/config.js';
-import { getCityDataUri } from './config/config.js';
-import { getJsonData } from './rest/get.js';
 import { addMarker } from './marker.js';
 import { addLine } from './line.js';
 import { drawMap } from './map.js';
 
-//TODO trigger this function somewhere else (for examole some button onClick acion etc)
-draw('Bochnia');
-
-export function draw(city) {
-    const cityGraphDataUri = getCityGraphUri(city);
-    getJsonData(cityGraphDataUri)
-        .then(result => drawDataAsGraph(result))
-        .catch(error => console.log(error));
-}
-
-function drawDataAsGraph(graphData) {
-    const ways = graphData['ways'];
-    const nodes = graphData['nodes'];
+export function drawGraph(graphData) {
+    const edges = graphData['edges'];
+    const crossings = graphData['crossings'];
     let features = [];
     let mapCenterCoords;
 
-    ways.forEach(way => {
-        const wayNodes = way['nodes'];
+    edges.forEach(edge => {
+        const edgeCrossings = edge['crossings'];
 
-        const firstNode = wayNodes[0];
-        const firstNodeCoords = mapCenterCoords = [firstNode['lon'], firstNode['lat']];
-        addMarker(features, firstNodeCoords);
+        const firstCrossing = edgeCrossings[0];
+        const firstCrossingCoords = mapCenterCoords = [firstCrossing['lon'], firstCrossing['lat']];
+        addMarker(features, firstCrossingCoords);
 
-        for (let i = 1; i < wayNodes.length; ++i) {
-            const nodeFrom = wayNodes[i - 1];
-            const nodeFromCoords = [nodeFrom['lon'], nodeFrom['lat']];
-            const nodeTo = wayNodes[i];
-            const nodeToCoords = [nodeTo['lon'], nodeTo['lat']];
-            addLine(features, nodeFromCoords, nodeToCoords);
-            addMarker(features, nodeToCoords);
+        for (let i = 1; i < edgeCrossings.length; ++i) {
+            const crossingFrom = edgeCrossings[i - 1];
+            const crossingFromCoords = [crossingFrom['lon'], crossingFrom['lat']];
+            const crossingTo = edgeCrossings[i];
+            const crossingToCoords = [crossingTo['lon'], crossingTo['lat']];
+            addLine(features, crossingFromCoords, crossingToCoords);
+            addMarker(features, crossingToCoords);
         }
     });
 

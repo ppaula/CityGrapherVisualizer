@@ -4,11 +4,12 @@
             "baseUrl": "http://localhost:8080/dataCollector",
             "endpoints": {
                 "cityGraph": "/cityGraph",
-                "cityData": "/cityData"
+                "cityData": "/cityData",
+                "algorithmResult" : "/algorithmResult/"
             }
         },
         "algorithm": {
-            "baseUrl": "http://localhost:8080/algorithm",
+            "baseUrl": "http://localhost:8090/algorithm",
             "endpoints": {
                 "algorithm": "/algorithm"
             }

@@ -71,7 +71,8 @@ footer {
 }
 
 .tools {
-  background-color: #C02942;
+  /* background-color: #C02942; */
+  background-color: mintcream;
   color: whitesmoke;
   padding: 1em;
   border-radius: 1em;
