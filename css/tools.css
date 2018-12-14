@@ -1,5 +1,3 @@
-/* Declarations of grid elements for templating areas */
-
 .inputContainer {
   grid-area: inputContainer
 }
