@@ -1,0 +1,22 @@
+/* Declarations of grid elements for templating areas */
+
+.inputContainer {
+  grid-area: inputContainer
+}
+
+.materialButtonContainer {
+    grid-area: materialButtonContainer;
+    text-align-last: right
+}
+
+.toolsContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1em;
+
+    grid-template-areas:
+    "inputContainer inputContainer"
+    "toggleSwitchContainer toggleSwitchContainer "
+    "toggleSwitchContainer toggleSwitchContainer "
+    ". materialButtonContainer"
+}
