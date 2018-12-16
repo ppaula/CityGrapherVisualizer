@@ -1,3 +1,7 @@
+#algorithmCancelButton {
+    visibility: collapse;
+}
+
 .materialButton {
     position: relative;
     display: inline-block;
