@@ -42,7 +42,7 @@ function getResultsFromAlgorithm(requestCounter, uri) {
         const calculationStatus = result['status'];
         if (calculationStatus == "SUCCESS") {
             getPositiveResultFromAlgorithm(result['taskId']);
-        } else if (calculationStatus == "CANCELED") {
+        } else if (calculationStatus == "CANCELLED") {
             console.log("Cancelled!");
         } else if (requestCounter < maxNumberOfRequestForCalculationStatus) {
             requestCounter++;
