@@ -4,18 +4,20 @@ import { getUriForAlgorithmTaskResult } from './config/config.js';
 import { getJsonData } from './rest/get.js';
 import { drawGraph } from './graph.js';
 
-const algorithmStarterButton = document.getElementById("algorithmStarterButton");
+const algorithmStartButton = document.getElementById("algorithmStartButton");
+const algorithmCancelButton = document.getElementById("algorithmCancelButton");
 
 const maxNumberOfRequestForCalculationStatus = 500;
 const millisecondsToWaitBetweenRequests = 1000;
 
-algorithmStarterButton.onclick = function() {
+algorithmStartButton.onclick = function() {
     if (validate()) {
         const cityInput = document.getElementById("cityInput");
         const cityName = cityInput.value;
         const cityGraphDataUri = getCityGraphUri(cityName);
         getJsonData(cityGraphDataUri)
         .then(result => {
+            algorithmCancelButton.style.visibility = "visible";
             getResultsFromAlgorithm(0, result['uri']);
         })
         .catch(error => console.log(error));
@@ -43,6 +45,7 @@ function getPositiveResultFromAlgorithm(taskId) {
     const uri = getUriForAlgorithmTaskResult(taskId);
     
     getJsonData(uri).then(algorithmResult => {
+        algorithmCancelButton.style.visibility = "collapse";
         drawGraph(algorithmResult);
     })
     .catch(error => console.log(error));
