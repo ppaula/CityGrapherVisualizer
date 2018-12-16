@@ -43,6 +43,7 @@ function getResultsFromAlgorithm(requestCounter, uri) {
         if (calculationStatus == "SUCCESS") {
             getPositiveResultFromAlgorithm(result['taskId']);
         } else if (calculationStatus == "CANCELLED") {
+            // TODO handle here successfully cancelled task or in elseif in algorithmCancelButton.onclick method
             console.log("Cancelled!");
         } else if (requestCounter < maxNumberOfRequestForCalculationStatus) {
             requestCounter++;
