@@ -1,15 +1,19 @@
 import configJson from "./config.json";
 
-const queryParamNameForCity = 'city';
+const queryParamNameForCity = "city";
+const queryParamNameForNumberOfResults = "numberOfResults";
 
 export function getCityDataUri(city) {
     const cityDataEndpointPath = getCityDataEndpointPath();
     return encodeQuerySingleParam(cityDataEndpointPath, queryParamNameForCity, city);
 }
 
-export function getCityGraphUri(city) {
+export function getCityGraphUri(city, numberOfResults) {
     const cityGraphEndpointPath = getCityGraphEndpointPath();
-    return encodeQuerySingleParam(cityGraphEndpointPath, queryParamNameForCity, city);
+    const params = { }
+    params[queryParamNameForCity] = city;
+    params[queryParamNameForNumberOfResults] = numberOfResults;
+    return encodeQueryParams(cityGraphEndpointPath, params);
 }
 
 export function getUriForAlgorithmTask(taskId) {
@@ -53,4 +57,13 @@ function getAlgorithmEndpoints() {
 
 function encodeQuerySingleParam(url, paramName, paramValue) {
     return url + '?' + paramName + '=' + paramValue;
+}
+
+function encodeQueryParams(url, params) {
+    const keys = Object.keys(params);
+    url = url + '?' + keys[0] + '=' + params[keys[0]];
+    for (let i = 1; i < keys.length; ++i) {
+        url += '&' + keys[i] + '=' + params[keys[i]];
+    }
+    return url;
 }

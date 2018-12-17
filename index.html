@@ -22,11 +22,20 @@
 		
 		<aside class="tools">
 			<div class="toolsContainer">
-				<div class="inputContainer">
-					<input type="text" id="cityInput" class="inputPlaceholder" placeholder="City" value="Bochnia">
-					<label for="cityInput" class="inputLabel">City</label>
+				<div>
+					<div class="inputContainer">
+						<input type="text" id="cityInput" class="inputPlaceholder" placeholder="City" value="Bochnia">
+						<label for="cityInput" class="inputLabel">City</label>
+					</div>
 				</div>
 				
+				<div>
+					<div class="inputContainer">
+						<input type="number" id="numberOfResultsInput" class="inputPlaceholder" placeholder="Number of results" value="2">
+						<label for="numberOfResultsInput" class="inputLabel">Number of results</label>
+					</div>
+				</div>
+
 				<div class="toggleSwitchContainer">
 					<input type="checkbox" id="inputToggleFirst" class="cbx hidden" checked="true" />
 					<label for="inputToggleFirst" class="toggleSwitchLabel"></label>
@@ -43,27 +52,27 @@
 					<input type="checkbox" id="inputToggleFirst4" class="cbx hidden" checked="true" />
 					<label for="inputToggleFirst4" class="toggleSwitchLabel"></label>
 				</div>
-
-
+				
+				
 				<div class="materialButtonContainer">
 					<button class="materialButton" id="algorithmCancelButton">Cancel</button>
 					<button class="materialButton" id="algorithmStartButton">Start</button>
 				</div>
 			</div>
-	</aside>
-	
-	<div class="osmMapContainer" id="osmFirstMapContainer">
-		<div id="osmMap"></div>			
+		</aside>
+		
+		<div class="osmMapContainer" id="osmFirstMapContainer">
+			<div id="osmMap"></div>			
+		</div>
+		
+		
+		<footer>Here be footer!</footer>
+		
+		<script src="./scripts/main.js"></script>
+		<script src="./scripts/graph.js"></script>
+		<script src="./scripts/algorithmExecutor.js"></script>
 	</div>
 	
-	
-	<footer>Here be footer!</footer>
-	
-	<script src="./scripts/main.js"></script>
-	<script src="./scripts/graph.js"></script>
-	<script src="./scripts/algorithmExecutor.js"></script>
-</div>
-
 </body>
 
 </html>

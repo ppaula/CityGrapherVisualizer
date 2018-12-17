@@ -14,8 +14,12 @@ const millisecondsToWaitBetweenRequests = 1000;
 algorithmStartButton.onclick = function() {
     if (validate()) {
         const cityInput = document.getElementById("cityInput");
+        const numberOfResultsInput = document.getElementById("numberOfResultsInput");
         const cityName = cityInput.value;
-        const cityGraphDataUri = getCityGraphUri(cityName);
+        const numberOfResults = numberOfResultsInput.value;
+
+        const cityGraphDataUri = getCityGraphUri(cityName, numberOfResults);
+        
         getJsonData(cityGraphDataUri)
         .then(result => {
             algorithmCancelButton.style.visibility = "visible";
