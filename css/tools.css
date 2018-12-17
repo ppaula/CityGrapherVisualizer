@@ -9,12 +9,15 @@
 
 .toolsContainer {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     grid-gap: 1em;
 
     grid-template-areas:
-    "inputContainer inputContainer"
-    "toggleSwitchContainer toggleSwitchContainer "
-    "toggleSwitchContainer toggleSwitchContainer "
-    "materialButtonContainer materialButtonContainer"
+    "inputContainer"
+    "inputContainer"
+    "toggleSwitchContainer"
+    "toggleSwitchContainer"
+    "toggleSwitchContainer"
+    "toggleSwitchContainer"
+    "materialButtonContainer"
 }
