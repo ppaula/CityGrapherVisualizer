@@ -3,11 +3,6 @@ import configJson from "./config.json";
 const queryParamNameForCity = "city";
 const queryParamNameForNumberOfResults = "numberOfResults";
 
-export function getCityDataUri(city) {
-    const cityDataEndpointPath = getCityDataEndpointPath();
-    return encodeQuerySingleParam(cityDataEndpointPath, queryParamNameForCity, city);
-}
-
 export function getCityGraphUri(city, numberOfResults) {
     const cityGraphEndpointPath = getCityGraphEndpointPath();
     const params = { }
@@ -25,12 +20,6 @@ export function getUriForAlgorithmTaskResult(taskId) {
     const dataCollectorBaseUrl = getDataCollectorBaseUrl();
     const algorithmResultEndpoint = getDataCollectorEndpoints()['algorithmResult'];
     return dataCollectorBaseUrl  + algorithmResultEndpoint  + taskId;
-}
-
-function getCityDataEndpointPath() {
-    const dataCollectorBaseUrl = getDataCollectorBaseUrl();
-    const cityDataEndpoint = getDataCollectorEndpoints()['cityData'];
-    return dataCollectorBaseUrl + cityDataEndpoint;
 }
 
 function getCityGraphEndpointPath() {
@@ -53,10 +42,6 @@ function getAlgorithmBaseUrl() {
 
 function getAlgorithmEndpoints() {
     return configJson['urls']['algorithm']['endpoints'];
-}
-
-function encodeQuerySingleParam(url, paramName, paramValue) {
-    return url + '?' + paramName + '=' + paramValue;
 }
 
 function encodeQueryParams(url, params) {
