@@ -5,16 +5,25 @@ export function getStyles() {
   return {
     'line': new Style({
       stroke: new Stroke({
-        width: 4,
+        width: 3,
         color: [237, 0, 0, 0.5]
       })
     }),
 
     'marker': new Style({
       image: new CircleStyle({
-        radius: 6,
+        radius: 5,
         fill: new Fill({ color: [237, 0, 0, 0.5] })
       })
     })
   };
+} 
+
+export function getHospitalMarkerStyle() {
+  return new Style({
+      image: new CircleStyle({
+        radius: 6,
+        fill: new Fill({ color: [0, 0, 237, 0.7] })
+      })
+    });
 } 

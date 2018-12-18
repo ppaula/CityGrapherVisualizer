@@ -21,7 +21,7 @@ export function drawGraph(graphData) {
             const crossingTo = edgeCrossings[i];
             const crossingToCoords = [crossingTo['lon'], crossingTo['lat']];
             addLine(features, crossingFromCoords, crossingToCoords);
-            addMarker(features, crossingToCoords);
+            addMarker(features, crossingToCoords, crossingFrom['hospital']);
         }
     });
 
