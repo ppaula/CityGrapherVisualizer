@@ -20,10 +20,11 @@ export function drawGraph(graphData) {
             const crossingTo = edgeCrossings[i];
             const crossingToCoords = [crossingTo['lon'], crossingTo['lat']];
             addLine(features, crossingFromCoords, crossingToCoords);
-            if (crossingFrom['isHospital'])
-                addHospitalMarker(features, crossingToCoords, crossingFrom);
-            else 
-                addMarker(features, crossingToCoords, crossingFrom);             
+            if (crossingFrom['isHospital']) {
+                addHospitalMarker(features, crossingToCoords);
+            } else { 
+                addMarker(features, crossingToCoords);     
+            }        
         }
     });
 
