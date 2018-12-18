@@ -1,15 +1,14 @@
-import { addMarker } from './marker.js';
+import { addMarker, addHospitalMarker } from './marker.js';
 import { addLine } from './line.js';
 import { drawMap } from './map.js';
 
 export function drawGraph(graphData) {
     const edges = graphData['edges'];
-    const crossings = graphData['crossings'];
     let features = [];
     let mapCenterCoords;
 
     edges.forEach(edge => {
-        const edgeCrossings = edge['crossings'];
+        const edgeCrossings = edge['nodes'];
 
         const firstCrossing = edgeCrossings[0];
         const firstCrossingCoords = mapCenterCoords = [firstCrossing['lon'], firstCrossing['lat']];
@@ -21,7 +20,11 @@ export function drawGraph(graphData) {
             const crossingTo = edgeCrossings[i];
             const crossingToCoords = [crossingTo['lon'], crossingTo['lat']];
             addLine(features, crossingFromCoords, crossingToCoords);
-            addMarker(features, crossingToCoords);
+            if (crossingFrom['isHospital']) {
+                addHospitalMarker(features, crossingToCoords);
+            } else { 
+                addMarker(features, crossingToCoords);     
+            }        
         }
     });
 
