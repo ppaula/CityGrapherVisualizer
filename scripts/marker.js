@@ -15,9 +15,10 @@ export function addMarker(features, coords) {
 export function addHospitalMarker(features, coords) {
 	const marker = new Feature({
 		type: 'marker',
-		geometry: new Point(coords).transform('EPSG:4326', 'EPSG:3857'),
-		style: getHospitalMarkerStyle()
+		geometry: new Point(coords).transform('EPSG:4326', 'EPSG:3857')
 	});
+
+	marker.setStyle(getHospitalMarkerStyle);
 
 	features.push(marker);
 } 

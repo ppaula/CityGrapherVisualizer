@@ -34,7 +34,7 @@ export function drawMap(features, mapCenterCoords) {
     view: new View({
       projection: 'EPSG:3857',
       center: fromLonLat(mapCenterCoords),
-      zoom: 17
+      zoom: 13
     })
   });
 }
