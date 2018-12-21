@@ -12,7 +12,11 @@ export function drawGraph(graphData) {
 
         const firstCrossing = edgeCrossings[0];
         const firstCrossingCoords = mapCenterCoords = [firstCrossing['lon'], firstCrossing['lat']];
-        addMarker(features, firstCrossingCoords);
+        if (firstCrossing['isHospital']) {
+            addHospitalMarker(features, firstCrossingCoords);
+        } else { 
+            addMarker(features, firstCrossingCoords);     
+        }  
 
         for (let i = 1; i < edgeCrossings.length; ++i) {
             const crossingFrom = edgeCrossings[i - 1];
@@ -20,7 +24,8 @@ export function drawGraph(graphData) {
             const crossingTo = edgeCrossings[i];
             const crossingToCoords = [crossingTo['lon'], crossingTo['lat']];
             addLine(features, crossingFromCoords, crossingToCoords);
-            if (crossingFrom['isHospital']) {
+
+            if (crossingTo['isHospital']) {
                 addHospitalMarker(features, crossingToCoords);
             } else { 
                 addMarker(features, crossingToCoords);     
