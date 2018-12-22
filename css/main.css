@@ -118,41 +118,21 @@ footer {
   }
 }
 
-/* Tablets */
-@media all and (max-width: 800px) {
-  .gridContainer{
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 3em 1fr 3em;
-    grid-template-areas: 
-    "nav nav nav"
-    "aside osmMapContainer osmMapContainer"
-    "footer footer footer"  
-  }
-  
-  .navigation {
-    justify-content: space-around;
-  }
-  
-  .labelTab {
-    font-size: 0;
-  }
-  .labelTab:before {
-    margin: 0;
-    font-size: 18px;
-  }
-}
-
 /* Mobile devices */
-@media all and (max-width: 600px) {
+@media all and (max-width: 800px) {
   .gridContainer{
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: 8em 1fr 1fr 3em;
+    grid-template-rows: 0em 1fr 1fr 3em;
     grid-template-areas: 
     "nav"
     "aside"
     "osmMapContainer"
     "footer"  
+  }
+  
+  .gridContainer {
+    height: 100vh;
   }
   
   .navigation {
@@ -171,8 +151,15 @@ footer {
   .navigation li:last-of-type a {
     border-bottom: none;
   }
-
+  
   .labelTab {
-    padding: 15px;
+    padding: 15px;    
+    font-size: 0;
   }
+  
+  .labelTab:before {
+    margin: 0;
+    font-size: 18px;
+  }
+  
 }   
