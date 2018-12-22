@@ -4,6 +4,7 @@
 <head>
 	<title>City Grapher Visualizer</title>
 	<link rel="stylesheet" type="text/css" href="./css/main.css">
+	<link rel="stylesheet" type="text/css" href="./css/tabs.css">
 	<link rel="stylesheet" type="text/css" href="./css/tools.css">
 	<link rel="stylesheet" type="text/css" href="./css/input.css">
 	<link rel="stylesheet" type="text/css" href="./css/toggleswitch.css">
@@ -11,67 +12,74 @@
 </head>
 
 <body>
-	<div class="gridContainer">
-		<nav>
-			<ul class="navigation">
-				<li><a href="#">Home</a></li>
-				<li><a href="#">About</a></li>
-				<li><a href="#">Other</a></li>
-			</ul>
-		</nav>
+	<main>
+		<input class="inputTab" id="tab1" type="radio" name="tabs" checked>
+		<label class="labelTab" for="tab1">City Grapher</label>
 		
-		<aside class="tools">
-			<div class="toolsContainer">
-				<div>
-					<div class="inputContainer">
-						<input type="text" id="cityInput" class="inputPlaceholder" placeholder="City" value="Bochnia">
-						<label for="cityInput" class="inputLabel">City</label>
+		<input class="inputTab" id="tab2" type="radio" name="tabs">
+		<label class="labelTab" for="tab2">About</label>
+		
+		<input class="inputTab" id="tab3" type="radio" name="tabs">
+		<label class="labelTab" for="tab3">Other</label>
+		
+		<section id="content1">
+			<div class="gridContainer">
+				<aside class="tools">
+					<div class="toolsContainer">
+						<div>
+							<div class="inputContainer">
+								<input type="text" id="cityInput" class="inputPlaceholder" placeholder="City" value="Bochnia">
+								<label for="cityInput" class="inputLabel">City</label>
+							</div>
+						</div>
+						
+						<div>
+							<div class="inputContainer">
+								<input type="number" id="numberOfResultsInput" class="inputPlaceholder" placeholder="Number of results" value="2">
+								<label for="numberOfResultsInput" class="inputLabel">Number of results</label>
+							</div>
+						</div>
+						
+						<div class="toggleSwitchContainer">
+							<input type="checkbox" id="inputToggleFirst" class="cbx hidden" checked="true" />
+							<label for="inputToggleFirst" class="toggleSwitchLabel"></label>
+						</div>
+						<div class="toggleSwitchContainer">
+							<input type="checkbox" id="inputToggleFirst2" class="cbx hidden" checked="true" />
+							<label for="inputToggleFirst2" class="toggleSwitchLabel"></label>
+						</div>
+						<div class="toggleSwitchContainer">
+							<input type="checkbox" id="inputToggleFirst3" class="cbx hidden" checked="true" />
+							<label for="inputToggleFirst3" class="toggleSwitchLabel"></label>
+						</div>
+						<div class="toggleSwitchContainer">
+							<input type="checkbox" id="inputToggleFirst4" class="cbx hidden" checked="true" />
+							<label for="inputToggleFirst4" class="toggleSwitchLabel"></label>
+						</div>
+						
+						
+						<div class="materialButtonContainer">
+							<button class="materialButton" id="algorithmCancelButton">Cancel</button>
+							<button class="materialButton" id="algorithmStartButton">Start</button>
+						</div>
 					</div>
-				</div>
+				</aside>
 				
-				<div>
-					<div class="inputContainer">
-						<input type="number" id="numberOfResultsInput" class="inputPlaceholder" placeholder="Number of results" value="2">
-						<label for="numberOfResultsInput" class="inputLabel">Number of results</label>
-					</div>
-				</div>
-
-				<div class="toggleSwitchContainer">
-					<input type="checkbox" id="inputToggleFirst" class="cbx hidden" checked="true" />
-					<label for="inputToggleFirst" class="toggleSwitchLabel"></label>
-				</div>
-				<div class="toggleSwitchContainer">
-					<input type="checkbox" id="inputToggleFirst2" class="cbx hidden" checked="true" />
-					<label for="inputToggleFirst2" class="toggleSwitchLabel"></label>
-				</div>
-				<div class="toggleSwitchContainer">
-					<input type="checkbox" id="inputToggleFirst3" class="cbx hidden" checked="true" />
-					<label for="inputToggleFirst3" class="toggleSwitchLabel"></label>
-				</div>
-				<div class="toggleSwitchContainer">
-					<input type="checkbox" id="inputToggleFirst4" class="cbx hidden" checked="true" />
-					<label for="inputToggleFirst4" class="toggleSwitchLabel"></label>
+				<div class="osmMapContainer" id="osmFirstMapContainer">
+					<div id="osmMap"></div>
 				</div>
 				
 				
-				<div class="materialButtonContainer">
-					<button class="materialButton" id="algorithmCancelButton">Cancel</button>
-					<button class="materialButton" id="algorithmStartButton">Start</button>
-				</div>
+				<footer>Here be footer!</footer>
+				
+				<script src="./scripts/main.js"></script>
+				<script src="./scripts/graph.js"></script>
+				<script src="./scripts/algorithmExecutor.js"></script>
 			</div>
-		</aside>
-		
-		<div class="osmMapContainer" id="osmFirstMapContainer">
-			<div id="osmMap"></div>			
-		</div>
-		
-		
-		<footer>Here be footer!</footer>
-		
-		<script src="./scripts/main.js"></script>
-		<script src="./scripts/graph.js"></script>
-		<script src="./scripts/algorithmExecutor.js"></script>
-	</div>
+		</section>
+	</main>
+	
+	
 	
 </body>
 

@@ -16,6 +16,30 @@ footer {
 }
 
 /* Styling elements */
+body {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:2em;
+  color:#345;
+  background:#f0f2f4;
+}
+
+main {
+  width: 1800px;
+  padding: 3em;
+  padding-bottom: 1.5em;
+  border: 1px solid rgba(0,0,0,.2);
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,.1);
+}
+
+section {
+  display: none;
+  padding: 20px 0 0;
+  border-top: 1px solid #abc;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -26,9 +50,7 @@ footer {
 .gridContainer{
   display: grid;
   grid-gap: 1em;
-  min-height: 100vh;
-  
-  padding: 10px;
+  height: 79vh;
 }
 
 .navigation {
@@ -59,19 +81,13 @@ footer {
   color: #441e2d;
 }
 
-.navigation a:hover {
-  /* TODO doesn't work. Don't know why ;( */
-  background: darken(deepskyblue, 2%);
-}
-
 .osmMapContainer {
   margin: 0em;
   border-radius: 1em;  
-  background: #c0547f;
+  background: mintcream;
 }
 
 .tools {
-  /* background-color: #C02942; */
   background-color: mintcream;
   color: whitesmoke;
   padding: 1em;
@@ -79,8 +95,7 @@ footer {
 }
 
 footer {
-  background-color:#542437;
-  color: rgb(248, 172, 84);;
+  color: rgb(33, 150, 243);
   padding: 1em;
   border-radius: 1em;  
 }
@@ -95,7 +110,7 @@ footer {
 @media screen and (min-width: 801px) {
   .gridContainer{
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 3em 1fr 3em;
+    grid-template-rows: 0em 1fr 3em;
     grid-template-areas: 
     "nav nav nav nav"
     "aside osmMapContainer osmMapContainer osmMapContainer"
@@ -116,6 +131,14 @@ footer {
   
   .navigation {
     justify-content: space-around;
+  }
+  
+  .labelTab {
+    font-size: 0;
+  }
+  .labelTab:before {
+    margin: 0;
+    font-size: 18px;
   }
 }
 
@@ -147,5 +170,9 @@ footer {
   
   .navigation li:last-of-type a {
     border-bottom: none;
+  }
+
+  .labelTab {
+    padding: 15px;
   }
 }   

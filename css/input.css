@@ -28,8 +28,7 @@
   top: 20px;
 }
 
-label,
-.inputPlaceholder:focus ~ .inputLabel {
+.inputLabel, .inputPlaceholder:focus ~ .inputLabel {
   position: absolute;
   top: 0;
   display: block;
