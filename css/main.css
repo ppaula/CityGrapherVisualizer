@@ -92,7 +92,7 @@ section {
 }
 
 footer {
-  color: rgb(33, 150, 243);
+  color: rgb(33, 150, 243, 0.45);
   padding: 1em;
   border-radius: 1em;  
 }
