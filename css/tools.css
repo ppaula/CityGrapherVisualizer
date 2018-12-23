@@ -1,5 +1,9 @@
-.inputContainer {
-  grid-area: inputContainer
+.inputContainerOdd {
+  grid-area: inputContainerOdd
+}
+
+.inputContainerEven {
+  grid-area: inputContainerEven
 }
 
 .materialButtonContainer {
@@ -7,17 +11,22 @@
     text-align-last: right
 }
 
+.toggleSwitchDescription {
+    position: relative;
+    top: 25%;
+}
+
 .toolsContainer {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: 4em 1fr;
     grid-gap: 1em;
 
     grid-template-areas:
-    "inputContainer"
-    "inputContainer"
-    "toggleSwitchContainer"
-    "toggleSwitchContainer"
-    "toggleSwitchContainer"
-    "toggleSwitchContainer"
-    "materialButtonContainer"
+    "inputContainerOdd inputContainerOdd"
+    "inputContainerEven inputContainerEven"
+    "toggleSwitchContainer toggleSwitchDescription"
+    "toggleSwitchContainer toggleSwitchDescription"
+    "toggleSwitchContainer toggleSwitchDescription"
+    "toggleSwitchContainer toggleSwitchDescription"
+    "materialButtonContainer materialButtonContainer"
 }
