@@ -35,28 +35,28 @@
 						
 						<div class="inputContainer inputContainerEven">
 							<div>
-								<input type="number" id="numberOfResultsInput" class="inputPlaceholder" placeholder="Number of results" value="2">
+								<input type="number" min="1" max="5" id="numberOfResultsInput" class="inputPlaceholder" placeholder="Number of results" value="2">
 								<label for="numberOfResultsInput" class="inputLabel">Number of results</label>
 							</div>
 						</div>
 						
 						<div class="toggleSwitchContainer">
-							<input type="checkbox" id="inputToggleDrawCrossings" class="cbx hidden" checked="checked" />
+							<input type="checkbox" id="inputToggleDrawNodes" class="cbx hidden" checked="checked" />
 							<label for="inputToggleDrawCrossings" class="toggleSwitchLabel"></label>
 						</div>
 						<div class="toggleSwitchDescription">
 							Show all nodes
 						</div>
 						<div class="toggleSwitchContainer">
-							<input type="checkbox" id="inputToggleFirst2" class="cbx hidden" checked="checked" />
-							<label for="inputToggleFirst2" class="toggleSwitchLabel"></label>
+							<input type="checkbox" id="inputToggleDrawCrossings" class="cbx hidden" checked="checked" />
+							<label for="inputToggleDrawCrossings" class="toggleSwitchLabel"></label>
 						</div>
 						<div class="toggleSwitchDescription">
 							Show all crossings
 						</div>
 						<div class="toggleSwitchContainer">
-							<input type="checkbox" id="inputToggleFirst3" class="cbx hidden" />
-							<label for="inputToggleFirst3" class="toggleSwitchLabel"></label>
+							<input type="checkbox" id="inputToggleUseBruteForce" class="cbx hidden" />
+							<label for="inputToggleUseBruteForce" class="toggleSwitchLabel"></label>
 						</div>
 						<div class="toggleSwitchDescription">
 							Use Brute Force Algorithm
