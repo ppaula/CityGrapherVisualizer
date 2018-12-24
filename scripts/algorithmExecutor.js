@@ -8,6 +8,8 @@ import { drawGraph } from './graph.js';
 
 const algorithmStartButton = document.getElementById("algorithmStartButton");
 const algorithmCancelButton = document.getElementById("algorithmCancelButton");
+const inputToggleDrawNodes = document.getElementById("inputToggleDrawNodes");
+const inputToggleDrawCrossings = document.getElementById("inputToggleDrawCrossings");
 
 const maxNumberOfRequestForCalculationStatus = 500;
 const millisecondsToWaitBetweenRequests = 1000;
@@ -29,6 +31,8 @@ algorithmStartButton.onclick = function() {
             showMixin("Started algorithm for city " + cityName);            
             setButtonsToAwaitingState();
             sessionStorage.setItem('uri', result['uri']);
+            sessionStorage.setItem('shouldDrawAllNodes', inputToggleDrawNodes.checked);
+            sessionStorage.setItem('shouldDrawAllCrossings', inputToggleDrawCrossings.checked);
             getResultsFromAlgorithm(0, sessionStorage.getItem('uri'));
         })
         .catch(error => {
