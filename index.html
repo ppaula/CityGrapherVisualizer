@@ -60,73 +60,74 @@
 						</div>
 						<div class="toggleSwitchDescription">
 							Use Brute Force Algorithm
-						</div>
-						
-						
-						<div class="materialButtonContainer">
-							<button class="materialButton" id="algorithmCancelButton">Cancel</button>
-							<button class="materialButton" id="algorithmStartButton">Start</button>
-						</div>
+						</br>
+						<p id="bruteForceAddidtionalDescription">(probably much slower than Simulated Annealing Algorithm, but returning exact results; use only for 1-3 requested results and smaller cities)</p>
 					</div>
-				</aside>
-				
-				<div class="osmMapContainer" id="osmFirstMapContainer">
-					<div id="osmMap"></div>
+					
+					
+					<div class="materialButtonContainer">
+						<button class="materialButton" id="algorithmCancelButton">Cancel</button>
+						<button class="materialButton" id="algorithmStartButton">Start</button>
+					</div>
 				</div>
-				
-				
-				<footer>CityGrapher & CityGrapher Visualizer 2019, AGH Univeristy of Science and Technology</footer>
-				
-				<script src="./scripts/main.js"></script>
-				<script src="./scripts/graph.js"></script>
-				<script src="./scripts/algorithmExecutor.js"></script>
+			</aside>
+			
+			<div class="osmMapContainer" id="osmFirstMapContainer">
+				<div id="osmMap"></div>
 			</div>
-		</section>
-		
-		<section id="content2">
-			What about us?
-		</section>
-		
-		<section id="content3">
-			<p>
-				CityGrapher and CityGrapher Visualizer are BSc Thesises made by two students from AGH UST. The main goal of the project
-				is to create an algorithm for finding an optimal distribution of local service centres on transportation network. The graph
-				is created with real OpenStreetMaps city data and algorithm is based on the simulated annealing idea.
-			</br></br>
-			GitHub repositories:
-			<ul>
-				<li><a href="https://github.com/Prim07/CityGrapher" />CityGrapher</li>
-				<li><a href="https://github.com/ppaula/CityGrapherVisualizer" />CityGrapher Visualizer</li>
-			</ul>
-			</br></br>			
-			Prerequisites:
-			<ul>
-				<li>Java 11</li>
-				<li>Spring</li>
-				<li>JavaScript 8.12</li>
-			</ul>
-			</br></br>			
-			Built with:
-			<ul>
-				<li>Frontend:
-					<ul>
-						<li>npm</li>
-						<li>Parcel</li>
-					</ul>
-				</li>
-				<li>Backend:
-					<ul>
-						<li>Maven</li>
-					</ul>
-				</li>
-			</ul>
-		</p>
-		
+			
+			
+			<footer>CityGrapher & CityGrapher Visualizer 2019, AGH Univeristy of Science and Technology</footer>
+		</div>
 	</section>
 	
+	<section id="content2">
+		What about us?
+	</section>
+	
+	<section id="content3">
+		<p>
+			CityGrapher and CityGrapher Visualizer are BSc Thesises made by two students from AGH UST. The main goal of the project
+			is to create an algorithm for finding an optimal distribution of local service centres on transportation network. The graph
+			is created with real OpenStreetMaps city data and algorithm is based on the simulated annealing idea.
+		</br></br>
+		GitHub repositories:
+		<ul>
+			<li><a href="https://github.com/Prim07/CityGrapher" />CityGrapher</li>
+			<li><a href="https://github.com/ppaula/CityGrapherVisualizer" />CityGrapher Visualizer</li>
+		</ul>
+	</br></br>			
+	Prerequisites:
+	<ul>
+		<li>Java 11</li>
+		<li>Spring</li>
+		<li>JavaScript 8.12</li>
+	</ul>
+</br></br>			
+Built with:
+<ul>
+	<li>Frontend:
+		<ul>
+			<li>npm</li>
+			<li>Parcel</li>
+		</ul>
+	</li>
+	<li>Backend:
+		<ul>
+			<li>Maven</li>
+		</ul>
+	</li>
+</ul>
+</p>
+
+</section>
+
 </main>
 
-
+<script src="./scripts/main.js"></script>
+<script src="./scripts/graph.js"></script>
+<script src="./scripts/algorithmExecutor.js"></script>
+<script src="./scripts/viewActions.js"></script>
 
 </body>
 

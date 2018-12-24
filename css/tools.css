@@ -13,7 +13,12 @@
 
 .toggleSwitchDescription {
     position: relative;
-    top: 25%;
+    top: 0.75em;
+}
+
+#bruteForceAddidtionalDescription {
+    color: gray;
+    visibility: collapse;
 }
 
 .toolsContainer {
