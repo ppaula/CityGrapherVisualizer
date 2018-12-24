@@ -14,6 +14,8 @@ const millisecondsToWaitBetweenRequests = 1000;
 
 algorithmStartButton.onclick = function() {
     if (validate()) {
+        algorithmStartButton.disabled = true;
+        
         const cityInput = document.getElementById("cityInput");
         const numberOfResultsInput = document.getElementById("numberOfResultsInput");
         const cityName = cityInput.value;
@@ -22,14 +24,18 @@ algorithmStartButton.onclick = function() {
         const cityGraphDataUri = getCityGraphUri(cityName, numberOfResults);
         
         showMixin("Started collecting data for city " + cityName);        
-
+        
         getJsonData(cityGraphDataUri).then(result => {
             showMixin("Started algorithm for city " + cityName);            
-            algorithmCancelButton.style.visibility = "visible";
+            setButtonsToAwaitingState();
             sessionStorage.setItem('uri', result['uri']);
             getResultsFromAlgorithm(0, sessionStorage.getItem('uri'));
         })
-        .catch(error => console.log(error));
+        .catch(error => {
+            setButtonsToInitialState();
+            showMixin("An internal server error occured", "error");
+            console.log(error);
+        });
     }
 }
 
@@ -38,7 +44,11 @@ algorithmCancelButton.onclick = function() {
     deleteForUri(uri).then(result => {
         console.log(result);
     })
-    .catch(error => console.log(error));
+    .catch(error => {
+        setButtonsToInitialState();
+        showMixin("An internal server error occured", "error");
+        console.log(error);
+    });
 }
 
 function getResultsFromAlgorithm(requestCounter, uri) {
@@ -47,7 +57,7 @@ function getResultsFromAlgorithm(requestCounter, uri) {
         if (calculationStatus == "SUCCESS") {
             getPositiveResultFromAlgorithm(result['taskId']);
         } else if (calculationStatus == "CANCELLED") {
-            hideCancelButton();
+            setButtonsToInitialState();
         } else if (requestCounter < maxNumberOfRequestForCalculationStatus) {
             requestCounter++;
             setTimeout(getResultsFromAlgorithm, millisecondsToWaitBetweenRequests, requestCounter, uri);
@@ -56,7 +66,7 @@ function getResultsFromAlgorithm(requestCounter, uri) {
         }
     })
     .catch(error => {
-        hideCancelButton();
+        setButtonsToInitialState();
         showMixin("An internal server error occured", "error");
         console.log(error);
     });
@@ -66,16 +76,22 @@ function getPositiveResultFromAlgorithm(taskId) {
     const uri = getUriForAlgorithmTaskResult(taskId);
     
     getJsonData(uri).then(algorithmResult => {
-        hideCancelButton();
+        setButtonsToInitialState();
         drawGraph(algorithmResult);
     })
     .catch(error => {
-        hideCancelButton();
+        setButtonsToInitialState();
         showMixin("An internal server error occured", "error");
         console.log(error);
     });
 }
 
-function hideCancelButton() {
-    algorithmCancelButton.style.visibility = "collapse";    
+function setButtonsToInitialState() {
+    algorithmCancelButton.style.visibility = "collapse";
+    algorithmStartButton.disabled = false;
+}
+
+function setButtonsToAwaitingState() {
+    algorithmCancelButton.style.visibility = "visible";
+    algorithmStartButton.disabled = true;
 }
