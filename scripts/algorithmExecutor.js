@@ -80,6 +80,7 @@ function getPositiveResultFromAlgorithm(taskId) {
     const uri = getUriForAlgorithmTaskResult(taskId);
     
     getJsonData(uri).then(algorithmResult => {
+        showMixin("Successfly completed calculating", "success");
         setButtonsToInitialState();
         drawGraph(algorithmResult);
     })
