@@ -19,7 +19,7 @@ export function drawGraph(graphData) {
             addHospitalMarker(features, firstCrossingCoords);
         } else {   
             // TODO here if stmt for drawing crossings
-            if (shouldDrawAllNodes) {
+            if (shouldDrawAllNodes == 'true') {
                 addMarker(features, firstCrossingCoords);
             }
         }  
@@ -35,7 +35,7 @@ export function drawGraph(graphData) {
                 addHospitalMarker(features, crossingToCoords);
             } else { 
                 // TODO here if stmt for drawing crossings
-                if (shouldDrawAllNodes) {
+            if (shouldDrawAllNodes == 'true') {
                     addMarker(features, crossingToCoords); 
                 }
             }        
