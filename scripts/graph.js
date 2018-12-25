@@ -5,7 +5,7 @@ import { drawMap } from './map.js';
 export function drawGraph(graphData) {
     const shouldDrawAllNodes = sessionStorage.getItem('shouldDrawAllNodes');
     const shouldDrawAllCrossings = sessionStorage.getItem('shouldDrawAllCrossings');
-    
+
     const edges = graphData['edges'];
     let features = [];
     let mapCenterCoords;
@@ -17,9 +17,9 @@ export function drawGraph(graphData) {
         const firstCrossingCoords = mapCenterCoords = [firstCrossing['lon'], firstCrossing['lat']];
         if (firstCrossing['isHospital']) {
             addHospitalMarker(features, firstCrossingCoords);
-        } else { 
+        } else {   
             // TODO here if stmt for drawing crossings
-            if (shouldDrawAllNodes == true) {
+            if (shouldDrawAllNodes) {
                 addMarker(features, firstCrossingCoords);
             }
         }  
@@ -35,7 +35,7 @@ export function drawGraph(graphData) {
                 addHospitalMarker(features, crossingToCoords);
             } else { 
                 // TODO here if stmt for drawing crossings
-                if (shouldDrawAllNodes == true) {
+                if (shouldDrawAllNodes) {
                     addMarker(features, crossingToCoords); 
                 }
             }        
