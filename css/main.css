@@ -116,7 +116,7 @@ footer {
 /* Desktops */
 @media screen and (min-width: 801px) {
   .gridContainer{
-    height: 100vh;
+    height: 75vh;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr 3em;
     grid-template-areas: 
@@ -138,7 +138,7 @@ footer {
   }
   
   .gridContainer {
-    height: 100vh;
+    height: 75vh;
   }
   
   .navigation {
