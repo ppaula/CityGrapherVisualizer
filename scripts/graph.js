@@ -21,6 +21,8 @@ export function drawGraph(graphData) {
             // TODO here if stmt for drawing crossings
             if (shouldDrawAllNodes == 'true') {
                 addMarker(features, firstCrossingCoords);
+            } else if (shouldDrawAllCrossings == 'true' && firstCrossing['isCrossing']) {
+                addMarker(features, firstCrossingCoords);
             }
         }  
         
@@ -37,6 +39,8 @@ export function drawGraph(graphData) {
                 // TODO here if stmt for drawing crossings
             if (shouldDrawAllNodes == 'true') {
                     addMarker(features, crossingToCoords); 
+                } else if (shouldDrawAllCrossings == 'true' && crossingTo['isCrossing']) {
+                    addMarker(features, crossingToCoords);
                 }
             }        
         }
