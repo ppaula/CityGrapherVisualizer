@@ -22,6 +22,10 @@ footer {
   font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
 }
 
+::-webkit-scrollbar { 
+  display: none; 
+}
+
 body {
   display:flex;
   align-items:center;
@@ -47,6 +51,8 @@ section {
 }
 
 .gridContainer {
+  resize: vertical;
+  overflow: auto;
   display: grid;
   grid-gap: 1em;
 }
