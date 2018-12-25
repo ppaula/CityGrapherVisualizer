@@ -19,7 +19,11 @@ footer {
 * {
   box-sizing: border-box;
   margin: 0;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+}
+
+::-webkit-scrollbar { 
+  display: none; 
 }
 
 body {
@@ -47,9 +51,10 @@ section {
 }
 
 .gridContainer {
+  resize: vertical;
+  overflow: auto;
   display: grid;
   grid-gap: 1em;
-  height: 79vh;
 }
 
 .navigation {
@@ -87,15 +92,14 @@ section {
 
 .tools {
   background-color: mintcream;
-  color: whitesmoke;
   padding: 1em;
   border-radius: 1em;
 }
 
 footer {
-  color: rgb(33, 150, 243);
-  padding: 1em;
-  border-radius: 1em;  
+  color: rgb(33, 150, 243, 0.45);
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 
 #osmMap {
@@ -111,10 +115,10 @@ footer {
 /* Desktops */
 @media screen and (min-width: 801px) {
   .gridContainer{
+    height: 100vh;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 0em 1fr 3em;
+    grid-template-rows: 1fr 3em;
     grid-template-areas: 
-    "nav nav nav nav"
     "aside osmMapContainer osmMapContainer osmMapContainer"
     "footer footer footer footer"  
   }
@@ -125,9 +129,8 @@ footer {
   .gridContainer{
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: 0em 1fr 1fr 3em;
+    grid-template-rows: 1fr 1fr 3em;
     grid-template-areas: 
-    "nav"
     "aside"
     "osmMapContainer"
     "footer"  

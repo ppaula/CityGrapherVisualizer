@@ -1,4 +1,5 @@
 import { validate } from './formValidator.js';
+import { showMixin } from './alertViewer.js';
 import { getCityGraphUri } from './config/config.js';
 import { getUriForAlgorithmTaskResult } from './config/config.js';
 import { getJsonData } from './rest/get.js';
@@ -7,38 +8,51 @@ import { drawGraph } from './graph.js';
 
 const algorithmStartButton = document.getElementById("algorithmStartButton");
 const algorithmCancelButton = document.getElementById("algorithmCancelButton");
+const inputToggleDrawNodes = document.getElementById("inputToggleDrawNodes");
+const inputToggleDrawCrossings = document.getElementById("inputToggleDrawCrossings");
 
 const maxNumberOfRequestForCalculationStatus = 500;
 const millisecondsToWaitBetweenRequests = 1000;
 
 algorithmStartButton.onclick = function() {
     if (validate()) {
+        algorithmStartButton.disabled = true;
+        
         const cityInput = document.getElementById("cityInput");
         const numberOfResultsInput = document.getElementById("numberOfResultsInput");
         const cityName = cityInput.value;
         const numberOfResults = numberOfResultsInput.value;
-
+        
         const cityGraphDataUri = getCityGraphUri(cityName, numberOfResults);
         
-        getJsonData(cityGraphDataUri)
-        .then(result => {
-            algorithmCancelButton.style.visibility = "visible";
+        showMixin("Started collecting data for city " + cityName);        
+        
+        getJsonData(cityGraphDataUri).then(result => {
+            showMixin("Started algorithm for city " + cityName);            
+            setButtonsToAwaitingState();
             sessionStorage.setItem('uri', result['uri']);
+            sessionStorage.setItem('shouldDrawAllNodes', inputToggleDrawNodes.checked);
+            sessionStorage.setItem('shouldDrawAllCrossings', inputToggleDrawCrossings.checked);
             getResultsFromAlgorithm(0, sessionStorage.getItem('uri'));
         })
-        .catch(error => console.log(error));
-    } else {
-        // TODO call here errorPrinter or sth else, most probably in another script file
+        .catch(error => {
+            setButtonsToInitialState();
+            showMixin("An internal server error occured", "error");
+            console.log(error);
+        });
     }
 }
 
 algorithmCancelButton.onclick = function() {
     const uri = sessionStorage.getItem('uri');
     deleteForUri(uri).then(result => {
-        // TODO handle here successfully cancelled task or in elseif in getResultsFromAlgorithm method
         console.log(result);
     })
-    .catch(error => console.log(error));
+    .catch(error => {
+        setButtonsToInitialState();
+        showMixin("An internal server error occured", "error");
+        console.log(error);
+    });
 }
 
 function getResultsFromAlgorithm(requestCounter, uri) {
@@ -47,8 +61,7 @@ function getResultsFromAlgorithm(requestCounter, uri) {
         if (calculationStatus == "SUCCESS") {
             getPositiveResultFromAlgorithm(result['taskId']);
         } else if (calculationStatus == "CANCELLED") {
-            // TODO handle here successfully cancelled task or in elseif in algorithmCancelButton.onclick method
-            console.log("Cancelled!");
+            setButtonsToInitialState();
         } else if (requestCounter < maxNumberOfRequestForCalculationStatus) {
             requestCounter++;
             setTimeout(getResultsFromAlgorithm, millisecondsToWaitBetweenRequests, requestCounter, uri);
@@ -56,15 +69,34 @@ function getResultsFromAlgorithm(requestCounter, uri) {
             console.log('time exceeded');
         }
     })
-    .catch(error => console.log(error));
+    .catch(error => {
+        setButtonsToInitialState();
+        showMixin("An internal server error occured", "error");
+        console.log(error);
+    });
 }
 
 function getPositiveResultFromAlgorithm(taskId) {
     const uri = getUriForAlgorithmTaskResult(taskId);
     
     getJsonData(uri).then(algorithmResult => {
-        algorithmCancelButton.style.visibility = "collapse";
+        showMixin("Successfly completed calculating", "success");
+        setButtonsToInitialState();
         drawGraph(algorithmResult);
     })
-    .catch(error => console.log(error));
+    .catch(error => {
+        setButtonsToInitialState();
+        showMixin("An internal server error occured", "error");
+        console.log(error);
+    });
+}
+
+function setButtonsToInitialState() {
+    algorithmCancelButton.style.visibility = "collapse";
+    algorithmStartButton.disabled = false;
+}
+
+function setButtonsToAwaitingState() {
+    algorithmCancelButton.style.visibility = "visible";
+    algorithmStartButton.disabled = true;
 }

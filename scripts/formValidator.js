@@ -1,9 +1,22 @@
+import { showError } from './alertViewer.js';
 
+const maxNumberOfResultsForBruteForce = 3;
 
 export function validate() {
-    //TODO verify here inputs (not empty city etc)
-    const otherRequirements = true;
+    const cityInput = document.getElementById('cityInput');
+    const city = cityInput.value;
+    if(city == null || city == "") {
+        showError("City must not be empty");
+        return false;
+    }
 
-    const inputToggleFirst = document.getElementById('inputToggleFirst');
-    return otherRequirements && inputToggleFirst.checked;
+    const inputToggleUseBruteForce = document.getElementById('inputToggleUseBruteForce');
+    const numberOfResultsInput = document.getElementById('numberOfResultsInput');
+    const numberOfResults = numberOfResultsInput.value;
+    if (inputToggleUseBruteForce.checked && numberOfResults > maxNumberOfResultsForBruteForce) {
+        showError("You cannot run Brute Force Algorithm with more than 3 requested results.")
+        return false;
+    }
+
+    return true;
 }
