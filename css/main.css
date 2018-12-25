@@ -109,7 +109,7 @@ footer {
 /* Desktops */
 @media screen and (min-width: 801px) {
   .gridContainer{
-    height: 75vh;
+    height: 100vh;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr 3em;
     grid-template-areas: 
