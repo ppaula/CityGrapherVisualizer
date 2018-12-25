@@ -109,10 +109,10 @@ footer {
 /* Desktops */
 @media screen and (min-width: 801px) {
   .gridContainer{
+    height: 75vh;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 0em 40em 3em;
+    grid-template-rows: 1fr 3em;
     grid-template-areas: 
-    "nav nav nav nav"
     "aside osmMapContainer osmMapContainer osmMapContainer"
     "footer footer footer footer"  
   }
@@ -123,9 +123,8 @@ footer {
   .gridContainer{
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: 0em 1fr 1fr 3em;
+    grid-template-rows: 1fr 1fr 3em;
     grid-template-areas: 
-    "nav"
     "aside"
     "osmMapContainer"
     "footer"  
