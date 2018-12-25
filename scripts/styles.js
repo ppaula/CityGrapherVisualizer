@@ -12,7 +12,7 @@ export function getStyles() {
 
     'marker': new Style({
       image: new CircleStyle({
-        radius: 2,
+        radius: 3,
         fill: new Fill({ color: [237, 0, 0, 0.5] })
       })
     })
