@@ -9,7 +9,7 @@ export function getStyles() {
         color: [237, 0, 0, 0.5]
       })
     }),
-
+    
     'marker': new Style({
       image: new CircleStyle({
         radius: 3,
@@ -17,13 +17,22 @@ export function getStyles() {
       })
     })
   };
+}
+
+export function getCrossingMarkerStyle() {
+  return new Style({
+    image: new CircleStyle({
+      radius: 3,
+      fill: new Fill({ color: [168, 48, 216, 0.5] })
+    })
+  });
 } 
 
 export function getHospitalMarkerStyle() {
   return new Style({
-      image: new CircleStyle({
-        radius: 6,
-        fill: new Fill({ color: [0, 0, 237, 0.7] })
-      })
-    });
-} 
+    image: new CircleStyle({
+      radius: 6,
+      fill: new Fill({ color: [0, 0, 237, 0.7] })
+    })
+  });
+}

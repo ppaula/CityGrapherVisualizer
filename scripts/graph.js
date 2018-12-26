@@ -1,4 +1,4 @@
-import { addMarker, addHospitalMarker } from './marker.js';
+import { addMarker, addHospitalMarker, addCrossingMarker } from './marker.js';
 import { addLine } from './line.js';
 import { drawMap } from './map.js';
 
@@ -22,7 +22,7 @@ export function drawGraph(graphData) {
             if (shouldDrawAllNodes == 'true') {
                 addMarker(features, firstCrossingCoords);
             } else if (shouldDrawAllCrossings == 'true' && firstCrossing['isCrossing'] == true) {
-                addMarker(features, firstCrossingCoords);
+                addCrossingMarker(features, firstCrossingCoords);
             }
         }  
         
@@ -40,7 +40,7 @@ export function drawGraph(graphData) {
                 if (shouldDrawAllNodes == 'true') {
                     addMarker(features, crossingToCoords); 
                 } else if (shouldDrawAllCrossings == 'true' && crossingTo['isCrossing'] == true) {
-                    addMarker(features, crossingToCoords);
+                    addCrossingMarker(features, crossingToCoords);
                 }
             }        
         }
