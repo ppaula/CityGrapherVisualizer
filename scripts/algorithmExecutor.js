@@ -14,6 +14,9 @@ const inputToggleDrawCrossings = document.getElementById("inputToggleDrawCrossin
 const maxNumberOfRequestForCalculationStatus = 500;
 const millisecondsToWaitBetweenRequests = 1000;
 
+const simulatedAnnealingAlgorithmSymbol = "sa";
+const bruteForceAlgorithmSymbol = "bf";
+
 algorithmStartButton.onclick = function() {
     if (validate()) {
         algorithmStartButton.disabled = true;
@@ -22,8 +25,10 @@ algorithmStartButton.onclick = function() {
         const numberOfResultsInput = document.getElementById("numberOfResultsInput");
         const cityName = cityInput.value;
         const numberOfResults = numberOfResultsInput.value;
+        const inputToggleUseBruteForce = document.getElementById("inputToggleUseBruteForce");
+        const algorithmSymbol = inputToggleUseBruteForce.checked ? bruteForceAlgorithmSymbol : simulatedAnnealingAlgorithmSymbol;
         
-        const cityGraphDataUri = getCityGraphUri(cityName, numberOfResults);
+        const cityGraphDataUri = getCityGraphUri(cityName, numberOfResults, algorithmSymbol);
         
         showMixin("Started collecting data for city " + cityName);        
         

@@ -2,12 +2,14 @@ import configJson from "./config.json";
 
 const queryParamNameForCity = "city";
 const queryParamNameForNumberOfResults = "numberOfResults";
+const queryParamNameForAlgorithmType = "type";
 
-export function getCityGraphUri(city, numberOfResults) {
+export function getCityGraphUri(city, numberOfResults, algorithmType = "sa") {
     const cityGraphEndpointPath = getCityGraphEndpointPath();
     const params = { }
     params[queryParamNameForCity] = city;
     params[queryParamNameForNumberOfResults] = numberOfResults;
+    params[queryParamNameForAlgorithmType] = algorithmType;
     return encodeQueryParams(cityGraphEndpointPath, params);
 }
 
