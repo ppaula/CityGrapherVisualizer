@@ -12,7 +12,7 @@ export function getStyles() {
     
     'marker': new Style({
       image: new CircleStyle({
-        radius: 3,
+        radius: 4,
         fill: new Fill({ color: [237, 0, 0, 0.5] })
       })
     })
@@ -22,7 +22,7 @@ export function getStyles() {
 export function getCrossingMarkerStyle() {
   return new Style({
     image: new CircleStyle({
-      radius: 3,
+      radius: 4,
       fill: new Fill({ color: [168, 48, 216, 0.5] })
     })
   });
