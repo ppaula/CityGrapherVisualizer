@@ -4,13 +4,13 @@ const queryParamNameForCity = "city";
 const queryParamNameForNumberOfResults = "numberOfResults";
 const queryParamNameForAlgorithmType = "type";
 
-export function getCityGraphUri(city, numberOfResults, algorithmType = "sa") {
-    const cityGraphEndpointPath = getCityGraphEndpointPath();
-    const params = { }
+export function getCreateTaskUri() {
+    return getCreateTaskEndpointPath();
+    /* const params = { }
     params[queryParamNameForCity] = city;
     params[queryParamNameForNumberOfResults] = numberOfResults;
-    params[queryParamNameForAlgorithmType] = algorithmType;
-    return encodeQueryParams(cityGraphEndpointPath, params);
+    params[queryParamNameForAlgorithmType] = algorithmType; */
+    // return encodeQueryParams(createTaskEndpointPath, params);
 }
 
 export function getUriForAlgorithmTask(taskId) {
@@ -24,10 +24,10 @@ export function getUriForAlgorithmTaskResult(taskId) {
     return dataCollectorBaseUrl  + algorithmResultEndpoint  + taskId;
 }
 
-function getCityGraphEndpointPath() {
+function getCreateTaskEndpointPath() {
     const dataCollectorBaseUrl = getDataCollectorBaseUrl();
-    const cityGraphEndpoint = getDataCollectorEndpoints()['cityGraph'];
-    return dataCollectorBaseUrl + cityGraphEndpoint;
+    const createTaskEndpoint = getDataCollectorEndpoints()['createTask'];
+    return dataCollectorBaseUrl + createTaskEndpoint;
 }
 
 function getDataCollectorBaseUrl() {

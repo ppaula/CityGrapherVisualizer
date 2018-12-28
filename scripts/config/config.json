@@ -3,7 +3,7 @@
         "dataCollector": {
             "baseUrl": "http://localhost:8080/dataCollector",
             "endpoints": {
-                "cityGraph": "/cityGraph",
+                "createTask": "/createTask",
                 "algorithmResult" : "/algorithmResult/"
             }
         },
