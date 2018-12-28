@@ -1,8 +1,9 @@
 import { validate } from './formValidator.js';
 import { showMixin } from './alertViewer.js';
-import { getCityGraphUri } from './config/config.js';
+import { getCreateTaskUri } from './config/config.js';
 import { getUriForAlgorithmTaskResult } from './config/config.js';
 import { getJsonData } from './rest/get.js';
+import { postJsonData } from './rest/post.js';
 import { deleteForUri } from './rest/delete.js';
 import { drawGraph } from './graph.js';
 
@@ -26,13 +27,15 @@ algorithmStartButton.onclick = function() {
         const cityName = cityInput.value;
         const numberOfResults = numberOfResultsInput.value;
         const inputToggleUseBruteForce = document.getElementById("inputToggleUseBruteForce");
-        const algorithmSymbol = inputToggleUseBruteForce.checked ? bruteForceAlgorithmSymbol : simulatedAnnealingAlgorithmSymbol;
+        const algorithmType = inputToggleUseBruteForce.checked ? bruteForceAlgorithmSymbol : simulatedAnnealingAlgorithmSymbol;
         
-        const cityGraphDataUri = getCityGraphUri(cityName, numberOfResults, algorithmSymbol);
+        const cityGraphDataUri = getCreateTaskUri();
+
+        const data = getPostDataForTaskInput(cityName, numberOfResults, algorithmType);
         
         showMixin("Started collecting data for city " + cityName);        
         
-        getJsonData(cityGraphDataUri).then(result => {
+        postJsonData(cityGraphDataUri, data).then(result => {
             showMixin("Started algorithm for city " + cityName);            
             setButtonsToAwaitingState();
             sessionStorage.setItem('uri', result['uri']);
@@ -94,6 +97,14 @@ function getPositiveResultFromAlgorithm(taskId) {
         showMixin("An internal server error occured", "error");
         console.log(error);
     });
+}
+
+function getPostDataForTaskInput(cityName, numberOfResults, algorithmType) {
+    const data = {}
+    data["cityName"] = cityName;
+    data["numberOfResults"] = numberOfResults;
+    data["algorithmType"] = algorithmType;
+    return data;
 }
 
 function setButtonsToInitialState() {
