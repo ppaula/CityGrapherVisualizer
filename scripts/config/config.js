@@ -1,16 +1,7 @@
 import configJson from "./config.json";
 
-const queryParamNameForCity = "city";
-const queryParamNameForNumberOfResults = "numberOfResults";
-const queryParamNameForAlgorithmType = "type";
-
 export function getCreateTaskUri() {
     return getCreateTaskEndpointPath();
-    /* const params = { }
-    params[queryParamNameForCity] = city;
-    params[queryParamNameForNumberOfResults] = numberOfResults;
-    params[queryParamNameForAlgorithmType] = algorithmType; */
-    // return encodeQueryParams(createTaskEndpointPath, params);
 }
 
 export function getUriForAlgorithmTask(taskId) {
