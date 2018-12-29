@@ -1,6 +1,5 @@
 import { Feature } from 'ol';
 import { LineString } from 'ol/geom';
-import { transform } from 'ol/proj';
 
 export function addLine(features, fromCoords, toCoords) {
 	const locations = [fromCoords, toCoords];

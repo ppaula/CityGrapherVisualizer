@@ -131,10 +131,6 @@ footer {
     "footer"  
   }
   
-  .gridContainer {
-    height: 75vh;
-  }
-  
   .navigation {
     -webkit-flex-flow: column wrap;
     flex-flow: column wrap;

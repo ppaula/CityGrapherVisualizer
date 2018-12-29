@@ -1,6 +1,5 @@
 import { Feature } from 'ol';
 import { Point } from 'ol/geom';
-import { transform } from 'ol/proj';
 import { getHospitalMarkerStyle, getCrossingMarkerStyle } from './styles.js';
 
 export function addMarker(features, coords) {
