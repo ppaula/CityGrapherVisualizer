@@ -18,11 +18,10 @@ export function drawGraph(graphData) {
         if (firstCrossing['isHospital']) {
             addHospitalMarker(features, firstCrossingCoords);
         } else {   
-            // TODO here if stmt for drawing crossings
-            if (shouldDrawAllNodes == 'true') {
-                addMarker(features, firstCrossingCoords);
-            } else if (shouldDrawAllCrossings == 'true' && firstCrossing['isCrossing'] == true) {
+            if (shouldDrawAllCrossings == 'true' && firstCrossing['isCrossing'] == true) {
                 addCrossingMarker(features, firstCrossingCoords);
+            } else if (shouldDrawAllNodes == 'true') {
+                addMarker(features, firstCrossingCoords);
             }
         }  
         
@@ -36,11 +35,10 @@ export function drawGraph(graphData) {
             if (crossingTo['isHospital']) {
                 addHospitalMarker(features, crossingToCoords);
             } else { 
-                // TODO here if stmt for drawing crossings
-                if (shouldDrawAllNodes == 'true') {
-                    addMarker(features, crossingToCoords); 
-                } else if (shouldDrawAllCrossings == 'true' && crossingTo['isCrossing'] == true) {
+                if (shouldDrawAllCrossings == 'true' && crossingTo['isCrossing'] == true) {
                     addCrossingMarker(features, crossingToCoords);
+                } else if (shouldDrawAllNodes == 'true') {
+                    addMarker(features, crossingToCoords); 
                 }
             }        
         }
