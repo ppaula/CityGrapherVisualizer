@@ -102,8 +102,14 @@ footer {
   padding: 1em;
 }
 
+#content2 {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
 #content3 {
   padding-left: 50px;
+  padding-right: 50px;
 }
 
 /* Responsiveness */
